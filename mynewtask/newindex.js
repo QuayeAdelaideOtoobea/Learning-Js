@@ -2,7 +2,9 @@ const fs = require("fs").promises;
 const path = require("path");
 const readline = require("readline");
 
-
+// what happens when you enter a wrong  file path it will give an error  message 
+// what happens when you enter an empty  file path it will give an error message
+// use regEx to handle different date formats like dd-mm-yyyy or dd.mm.yyyy
 function askFilePath() {
     const rl = readline.createInterface({
         input: process.stdin,
