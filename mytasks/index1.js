@@ -1,0 +1,47 @@
+const persons = ["Adelaide_Quaye_01/01/2006",
+                "Reinard_Mills_01/01/2001",
+                "Julian_Guasu_01/01/2003",   
+                "Adel_Acquaye_01/02/2004",
+                "Kofi_Yeboah_14/06/2012",
+                "Yaa_Asante_11/10/2005",
+                "Rose_Ansah_17/11/2001",
+                "Kwame_Asare_01/01/2003",        
+                "Linda_Ofori_14/06/2012",
+                "Michael_Mensah_11/10/2005",
+                "Abena_Sarpong_23/02/2004",
+                "Joseph_Amankwah_01/01/2003",
+                "Rita_Boakye_05/05/2001",
+                "Samuel_Ankrah_14/06/2012",
+                "Naomi_Adi_23/02/2004",
+                "Kwaku_Addo_11/10/2005",
+                "Esi_Adu_18/04/2006",
+                "Rose_Ansah_18/04/2006" ];
+        
+            
+
+                function sortedPersons(persons) {
+                    const sorteDpersons = {};
+
+                    persons.forEach(element => { const [firstName, lastName, dateOfBirth] = element.split('_');
+                    const [dd,mm,yyyy] = dateOfBirth.split('/');
+
+                const fullName = `${firstName} ${lastName}`;
+
+                    if (!sorteDpersons[yyyy]) {
+                        sorteDpersons[yyyy] = {};
+                    }
+                    if (!sorteDpersons[yyyy][mm]) {
+                        sorteDpersons[yyyy][mm] = {};
+                    }
+                    if (!sorteDpersons[yyyy][mm][dd]) {
+                        sorteDpersons[yyyy][mm][dd] = [];
+                    };
+                    sorteDpersons[yyyy][mm][dd].push(fullName);
+                });
+                    return sorteDpersons;
+}
+
+console.log(JSON.stringify(sortedPersons(persons), null,2));
+
+
+        

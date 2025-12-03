@@ -1,10 +1,10 @@
-/*const fs = require("fs").promises;
+//Taking input from a user for file path, loading a .txt file, sorting persons by date and outputting the result as JSON.
+
+const fs = require("fs").promises;
 const path = require("path");
 const readline = require("readline");
 
-// what happens when you enter a wrong  file path it will give an error  message 
-// what happens when you enter an empty  file path it will give an error message
-// use regEx to handle different date formats like dd-mm-yyyy or dd.mm.yyyy
+
 function askFilePath() {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -19,10 +19,6 @@ function askFilePath() {
     );
     }
     
-
-    if (filePath!== persons.txt) {
-        throw new Error("This file does not exist!");
-    }
 );
 }
 
@@ -69,4 +65,5 @@ async function main() {
     }
 }
 
-main();*/
+main();
+

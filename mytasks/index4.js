@@ -1,10 +1,12 @@
-/*const fs = require("fs").promises;
+//adding an error message if you enter a filepath that does not exist
+// and a file that is empty.
+
+
+const fs = require("fs").promises;
 const path = require("path");
 const readline = require("readline");
 
-// what happens when you enter a wrong  file path it will give an error  message 
-// what happens when you enter an empty  file path it will give an error message
-// use regEx to handle different date formats like dd-mm-yyyy or dd.mm.yyyy
+
 function askFilePath() {
     const rl = readline.createInterface({
         input: process.stdin,
@@ -19,10 +21,6 @@ function askFilePath() {
     );
     }
     
-
-    if (filePath!== persons.txt) {
-        throw new Error("This file does not exist!");
-    }
 );
 }
 
@@ -31,7 +29,17 @@ async  function loadPersonsFromFile(filePath) {
         throw new Error("Only .txt files are allowed!");
     }
 
+    try {
+        await fs.access(filePath);  
+    } catch {
+        throw new Error(`${filePath} not found!`);
+    }
+
     const fileData = await fs.readFile(filePath, "utf8");
+
+    if (!fileData.trim()) { 
+    throw new Error("The file is empty.");
+}
 
     return fileData
         .split(/\r?\n/) 
@@ -69,4 +77,19 @@ async function main() {
     }
 }
 
+main();
+
+/*async function main() {
+    try {
+        const filePath = await askFilePath();
+        const persons = await loadPersonsFromFile(filePath);
+        const result = sortedPersons(persons);
+
+        await fs.writeFile("sorted_output.json", JSON.stringify(result, null, 2), "utf8");
+
+        console.log("Done! Output written to sorted_output.json");
+    }
 main();*/
+
+
+
